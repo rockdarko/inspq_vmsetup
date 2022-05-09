@@ -35,6 +35,6 @@
   template: 
     src: sudoers.j2
     dest: "/etc/sudoers.d/{{ sudoers_user }}"
-    user: root
+    owner: root
     group: root
     mode: 440
