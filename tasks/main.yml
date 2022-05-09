@@ -34,4 +34,7 @@
   become: yes
   template: 
     src: sudoers.j2
-    dest: "/home/{{ sudoers_user }}/{{ sudoers_user }}"
+    dest: "/etc/sudoers.d/{{ sudoers_user }}"
+    user: root
+    group: root
+    mode: 440
