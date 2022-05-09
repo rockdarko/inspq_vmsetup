@@ -76,12 +76,4 @@
     path: "/home/{{ sudoers_user }}/.bashrc"
     line: "alias inspq='sudo openconnect --protocol=gp www.portail.rtss.qc.ca -u marroc28'"
     create: yes
-
-- name: "Log into private registry and force re-authorization as user {{ sudoers_user }}"
-  command: docker login nexus3.inspq.qc.ca:5000 --username admin --password admin123
-
-- name: "Log into private registry and force re-authorization as root"
-  command: docker login nexus3.inspq.qc.ca:5000 --username admin --password admin123
-  become: yes
-  become_user: root
     
