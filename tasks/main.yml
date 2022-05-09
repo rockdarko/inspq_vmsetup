@@ -29,3 +29,11 @@
       - openconnect
     state: latest
   when: ansible_facts['os_family'] == "Debian"
+
+- name: add username to sudoers
+  become: yes
+  sudoers: 
+    name: "default"
+    user: "{{ sudoers_user }}"
+    commands: ALL
+    nopassword: yes
