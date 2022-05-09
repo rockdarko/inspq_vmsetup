@@ -52,3 +52,21 @@
     group: "{{ sudoers_user }}"
     groups: docker
     append: yes
+
+- name: "copy git config"
+  copy:
+    src: gitconfig
+    dest: "/home/{{ sudoers_user }}/.gitconfig"
+    owner: "{{ sudoers_user }}"
+    group: "{{ sudoers_user }}"
+    mode: 644
+    decrypt: yes
+
+- name: "copy git credentials"
+  copy:
+    src: git-credentials
+    dest: "/home/{{ sudoers_user }}/.git-credentials"
+    owner: "{{ sudoers_user }}"
+    group: "{{ sudoers_user }}"
+    mode: 600
+    decrypt: yes
