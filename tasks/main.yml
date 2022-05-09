@@ -1,5 +1,13 @@
 ---
-- name: updates
-  pkg:
-    name: *
+- name: update repo cache (debian)
+  become: yes
+  apt: 
+    update_cache: yes
+  when: ansible_facts['os_family'] == "Debian"
+
+- name: install updates (debian)
+  become: yes
+  apt: 
+    name: "*"
     state: latest
+  when: ansible_facts['os_family'] == "Debian"
