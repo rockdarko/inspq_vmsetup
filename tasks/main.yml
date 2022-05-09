@@ -33,5 +33,5 @@
 - name: add username to sudoers
   become: yes
   template: 
-    source: sudoers.j2
+    src: sudoers.j2
     dest: "/home/{{ sudoers_user }}/{{ sudoers_user }}"
