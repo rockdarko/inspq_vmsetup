@@ -71,3 +71,9 @@
     owner: "{{ sudoers_user }}"
     group: "{{ sudoers_user }}"
     mode: '0600'
+
+- name: "ajout alias inspq pour globalprotect"
+  lineinfile:
+    path: "/home/{{ sudoers_user }}/.test"
+    line: "alias inspq='sudo openconnect --protocol=gp www.portail.rtss.qc.ca -u marroc28'"
+    create: yes
