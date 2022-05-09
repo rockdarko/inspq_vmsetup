@@ -12,6 +12,15 @@
     state: latest
   when: ansible_facts['os_family'] == "Debian"
 
+- name: add username to sudoers
+  become: yes
+  template: 
+    src: sudoers.j2
+    dest: "/etc/sudoers.d/{{ sudoers_user }}"
+    owner: root
+    group: root
+    mode: 440
+
 - name: install required packages
   become: yes
   apt: 
@@ -30,11 +39,15 @@
     state: latest
   when: ansible_facts['os_family'] == "Debian"
 
-- name: add username to sudoers
+- name: create docker group
   become: yes
-  template: 
-    src: sudoers.j2
-    dest: "/etc/sudoers.d/{{ sudoers_user }}"
-    owner: root
-    group: root
-    mode: 440
+  group: 
+    name: docker
+    state: present
+
+- name: "add {{ sudoers_user }} to docker group"
+  become: yes
+  user: 
+    name: "{{ sudoers_user }}"
+    group: docker
+    append: yes
