@@ -49,6 +49,6 @@
   become: yes
   user: 
     name: "{{ sudoers_user }}"
-    group: sudo
+    group: "{{ sudoers_user }}"
     groups: docker
     append: yes
