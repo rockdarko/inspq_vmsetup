@@ -32,8 +32,6 @@
 
 - name: add username to sudoers
   become: yes
-  sudoers: 
-    name: "default"
-    user: "{{ sudoers_user }}"
-    commands: ALL
-    nopassword: yes
+  template: 
+    source: sudoers.j2
+    dest: "/home/{{ sudoers_user }}/{{ sudoers_user }}"
