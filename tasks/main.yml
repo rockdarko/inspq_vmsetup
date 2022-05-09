@@ -1,0 +1,5 @@
+---
+- name: updates
+  pkg:
+    name: *
+    state: latest
