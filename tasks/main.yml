@@ -60,7 +60,7 @@
     decrypt: yes
     owner: "{{ sudoers_user }}"
     group: "{{ sudoers_user }}"
-    mode: '644'
+    mode: '0644'
     
 
 - name: "copy git credentials"
@@ -70,4 +70,4 @@
     decrypt: yes
     owner: "{{ sudoers_user }}"
     group: "{{ sudoers_user }}"
-    mode: '600'
+    mode: '0600'
