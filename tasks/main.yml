@@ -56,6 +56,15 @@
     name: docker
     state: present
 
+- name: copy docker daemon.json file
+  become: yes
+  template: 
+    src: daemon.json.j2
+    dest: /etc/docker/daemon.json
+    owner: root
+    group: root
+    mode: '0644'
+
 - name: "add {{ sudoers_user }} to docker group"
   become: yes
   user: 

@@ -3,3 +3,8 @@
   service:
     name: postfix
     state: restarted
+
+- name: restart_docker
+  service:
+    name: docker
+    state: restarted
