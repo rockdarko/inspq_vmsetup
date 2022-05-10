@@ -36,8 +36,19 @@
       - screen
       - git
       - openconnect
+      - htop
+      - postfix
     state: latest
   when: ansible_facts['os_family'] == "Debian"
+
+- name: copy postfix config
+  copy: 
+    src: main.cf
+    dest: /etc/postfix/main.cf
+    owner: root
+    group: root
+    mode: '0644'
+  notify: restart_postfix
 
 - name: create docker group
   become: yes
@@ -76,4 +87,4 @@
     path: "/home/{{ sudoers_user }}/.bashrc"
     line: "alias inspq='sudo openconnect --protocol=gp www.portail.rtss.qc.ca -u marroc28'"
     create: yes
-    
+

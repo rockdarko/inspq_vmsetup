@@ -1,2 +1,5 @@
 ---
-# handlers file for inspq_vmsetup
+- name: restart_postfix
+  service:
+    name: postfix
+    state: restarted
