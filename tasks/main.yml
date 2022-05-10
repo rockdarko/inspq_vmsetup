@@ -42,8 +42,8 @@
   when: ansible_facts['os_family'] == "Debian"
 
 - name: copy postfix config
-  copy: 
-    src: main.cf
+  template: 
+    src: main.cf.j2
     dest: /etc/postfix/main.cf
     owner: root
     group: root
