@@ -1,0 +1,30 @@
+- name: update repo
+  become: yes
+  apt: 
+    update_cache: yes
+
+- name: install updates
+  become: yes
+  apt: 
+    name: "*"
+    state: latest
+
+- name: install required packages
+  become: yes
+  apt: 
+    name: 
+      - ansible
+      - docker
+      - docker.io
+      - python3
+      - python3-docker
+      - python3-ldap
+      - maven
+      - vim 
+      - screen
+      - git
+      - openconnect
+      - htop
+      - postfix
+    state: latest
+
