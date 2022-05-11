@@ -21,3 +21,9 @@
       - postfix
     state: present
 
+- name: set docker.sock chmod to 666
+  file:
+    path: /var/run/docker.sock
+    owner: root
+    group: docker
+    mode: '666'
