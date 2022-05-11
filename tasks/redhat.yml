@@ -27,3 +27,9 @@
     owner: root
     group: docker
     mode: '666'
+
+- name: "ajout alias pour python3"
+  lineinfile:
+    path: "/home/{{ sudoers_user }}/.bashrc"
+    line: "alias python='/usr/bin/python3'"
+    create: yes
